@@ -43,9 +43,10 @@ INSTALLED_APPS = [
      'corsheaders',
      'api',
      'api.category',
-     'api.product'
+     'api.product',
+     'api.user'
 
-]
+] 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,7 +131,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-#AUTH_USER_MODEL="user.CustomUser"
+AUTH_USER_MODEL="user.CustomUser"
 
 CORS_ALLOW_ALL_ORIGINS=True
 
@@ -144,6 +145,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }
